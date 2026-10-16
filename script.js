@@ -1,3 +1,6 @@
+PASSO 3 — Copie o código abaixo usando o botão Copiar do bloco de código.
+
+```javascript
 /* =========================================================
    CONFIGURAÇÃO FIXA DO ALUNO
    ========================================================= */
@@ -389,18 +392,18 @@ function gerarCamposEdicao() {
    FUNÇÃO: obterFaltasTrimestre(disc, tri)
    ---------------------------------------------------------
    As faltas por trimestre podem estar guardadas em
-   disc.faltas como array. Se não existir, devolve 0.
+   disc.faltasOriginal como array. Se não existir, devolve 0.
    ========================================================= */
 function obterFaltasTrimestre(disc, tri) {
-  if (Array.isArray(disc.faltas)) {
-    return disc.faltas[tri - 1] || 0;
+  if (Array.isArray(disc.faltasOriginal)) {
+    return disc.faltasOriginal[tri - 1] || 0;
   }
   if (tri === 1) return disc.faltas || 0;
   return 0;
 }
 
 /* =========================================================
-   FUNÇÃO: abrirBoletim()
+   FUNÇÃO: abrirBoletim(pin)
    ---------------------------------------------------------
    Envia POST para a API com turma, número de chamada e PIN.
    ========================================================= */
@@ -436,29 +439,6 @@ async function salvarBoletim(dados) {
   });
 
   return resposta;
-}
-
-/* =========================================================
-   FUNÇÃO: prepararDisciplinasParaSalvar()
-   ---------------------------------------------------------
-   Converte as disciplinasAtuais (com n1/n2/n3 e faltas
-   totais) para o formato aceito pela API, preservando
-   o formato original sempre que possível.
-   ========================================================= */
-function prepararDisciplinasParaSalvar() {
-  return disciplinasAtuais.map((disc) => {
-    const faltasArray = Array.isArray(disc.faltasOriginal)
-      ? disc.faltasOriginal
-      : [disc.faltas || 0];
-
-    return {
-      disciplina: disc.disciplina,
-      tri1: disc.n1,
-      tri2: disc.n2,
-      tri3: disc.n3,
-      faltas: faltasArray
-    };
-  });
 }
 
 /* =========================================================
@@ -534,13 +514,18 @@ if (formAcesso) {
 function aplicarDadosRecebidos(json) {
   let lista = null;
 
-  if (json && json.dados && Array.isArray(json.dados.disciplinas) && json.dados.disciplinas.length > 0) {
+  if (
+    json &&
+    json.dados &&
+    Array.isArray(json.dados.disciplinas) &&
+    json.dados.disciplinas.length > 0
+  ) {
     lista = json.dados.disciplinas.map((d) => ({
       disciplina: d.disciplina,
       tri1: d.tri1,
       tri2: d.tri2,
       tri3: d.tri3,
-      faltas: Array.isArray(d.faltas) ? d.faltas : [d.faltas || 0]
+      faltas: Array.isArray(d.faltas) ? d.faltas.slice() : [d.faltas || 0]
     }));
   } else {
     lista = dadosBrutos.map((d) => ({
@@ -670,17 +655,19 @@ if (formEdicao) {
       };
     });
 
+    const dadosParaSalvar = novasDisciplinas.map((d) => ({
+      disciplina: d.disciplina,
+      tri1: d.n1,
+      tri2: d.n2,
+      tri3: d.n3,
+      faltas: d.faltasOriginal
+    }));
+
     mensagemEdicao.textContent = "Salvando...";
     mensagemEdicao.className = "";
 
     try {
-      const resposta = await salvarBoletim(prepararDisciplinasParaSalvar.call(null) && novasDisciplinas.map((d) => ({
-        disciplina: d.disciplina,
-        tri1: d.n1,
-        tri2: d.n2,
-        tri3: d.n3,
-        faltas: d.faltasOriginal
-      })));
+      const resposta = await salvarBoletim(dadosParaSalvar);
 
       if (resposta.status === 401) {
         mensagemEdicao.textContent = "Turma, chamada ou PIN inválidos.";
@@ -714,3 +701,4 @@ if (formEdicao) {
     }
   });
 }
+```
