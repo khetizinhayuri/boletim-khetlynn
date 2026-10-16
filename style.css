@@ -3,14 +3,14 @@ root {
   --roxo-escuro: #5b21b6;
   --lilas: #f3e8ff;
   --lilas-claro: #faf7ff;
-  --fundo: #faf9fc;
+  --fundo: #c8acff;
   --branco: #ffffff;
   --texto: #292536;
   --texto-suave: #716b7d;
   --borda: #e9e3f0;
-  --verde: #18794e;
-  --verde-fundo: #e8f7ee;
-  --laranja: #a6530b;
+  --verde: #be5efd;
+  --verde-fundo: #8a3bd4;
+  --laranja: #520088;
   --laranja-fundo: #fff2df;
 }
 
@@ -32,9 +32,6 @@ body {
   margin: 0 auto;
 }
 
-/* ==============================
-   2. Cabeçalho
-   ============================== */
 
 .cabecalho {
   padding: 32px 0;
@@ -63,9 +60,6 @@ body {
   color: var(--texto-suave);
 }
 
-/* ==============================
-   3. Apresentação do estudante
-   ============================== */
 
 .boas-vindas {
   display: flex;
@@ -97,9 +91,6 @@ body {
   font-weight: 700;
 }
 
-/* ==============================
-   4. Cards de resumo
-   ============================== */
 
 .resumo {
   display: grid;
@@ -155,9 +146,6 @@ body {
   font-weight: 700;
 }
 
-/* ==============================
-   5. Seção da tabela
-   ============================== */
 
 .secao-notas {
   margin-bottom: 32px;
@@ -200,7 +188,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* A tabela pode rolar horizontalmente em telas estreitas. */
+
 
 .tabela-container {
   width: 100%;
@@ -257,9 +245,6 @@ td:first-child {
   text-align: center;
 }
 
-/* ==============================
-   6. Situações das disciplinas
-   ============================== */
 
 .situacao {
   display: inline-block;
@@ -286,9 +271,6 @@ td:first-child {
   color: var(--roxo-escuro);
 }
 
-/* ==============================
-   7. Legenda e rodapé
-   ============================== */
 
 .legenda {
   display: flex;
@@ -326,9 +308,6 @@ td:first-child {
   text-align: center;
 }
 
-/* ==============================
-   8. Adaptação para celulares
-   ============================== */
 
 (max-width: 900px) {
   .resumo {
