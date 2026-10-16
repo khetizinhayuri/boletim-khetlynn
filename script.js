@@ -1,6 +1,3 @@
-PASSO 3 — Copie o código abaixo usando o botão Copiar do bloco de código.
-
-```javascript
 /* =========================================================
    CONFIGURAÇÃO FIXA DO ALUNO
    ========================================================= */
