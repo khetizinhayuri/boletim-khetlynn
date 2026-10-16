@@ -1,57 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <!-- Garante que o site funcione bem em celular -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boletim Digital</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Boletim Digital demonstrativo do 8º Ano">
+  <title>Boletim Digital | 8º Ano</title>
+
+  <!-- Arquivo responsável pelo visual da página -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Arquivo responsável pelos cálculos e pela tabela -->
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-  <!-- Cabeçalho com título e subtítulo -->
   <header class="cabecalho">
-    <h1>Boletim Digital</h1>
-    <p class="subtitulo">8º Ano — Estudante Exemplo</p>
+    <div class="container">
+      <p class="identificacao">ÁREA DO ESTUDANTE</p>
+      <h1>Boletim Digital</h1>
+      <p class="subtitulo">Acompanhamento escolar • 8º Ano</p>
+    </div>
   </header>
 
-  <main class="conteudo">
-
-    <!-- Área dos cards de resumo -->
-    <section class="cards" id="cards">
-      <!-- Os cards serão preenchidos pelo JavaScript -->
+  <main class="container">
+    <section class="boas-vindas" aria-labelledby="titulo-estudante">
+      <div>
+        <p class="texto-auxiliar">SEU DESEMPENHO ESCOLAR</p>
+        <h2 id="titulo-estudante">Olá, Estudante Exemplo!</h2>
+        <p>Acompanhe suas notas e seu desempenho por disciplina.</p>
+      </div>
+      <span class="etiqueta-serie">8º Ano</span>
     </section>
 
-    <!-- Área da tabela -->
-    <section class="tabela-area">
-      <h2>Notas por disciplina</h2>
+    <!-- Os valores dos cards serão preenchidos pelo JavaScript -->
+    <section class="resumo" aria-label="Resumo do boletim">
+      <article class="card-resumo">
+        <p>Média geral</p>
+        <strong id="media-geral">—</strong>
+        <span>Escala de 0 a 10</span>
+      </article>
 
-      <div class="tabela-responsiva">
+      <article class="card-resumo">
+        <p>Total de faltas</p>
+        <strong id="total-faltas">—</strong>
+        <span>Somatório das disciplinas</span>
+      </article>
+
+      <article class="card-resumo">
+        <p>Bom desempenho</p>
+        <strong id="bom-desempenho">—</strong>
+        <span>Disciplinas com média a partir de 6,0</span>
+      </article>
+
+      <article class="card-resumo">
+        <p>Precisam de atenção</p>
+        <strong id="precisam-atencao">—</strong>
+        <span>Disciplinas com média abaixo de 6,0</span>
+      </article>
+
+      <article class="card-resumo card-frequencia">
+        <p>Frequência demonstrativa</p>
+        <strong>92%</strong>
+        <span class="frequencia-status">Frequência adequada</span>
+        <small>Percentual fictício, apenas para demonstração.</small>
+      </article>
+    </section>
+
+    <section class="secao-notas" aria-labelledby="titulo-notas">
+      <div class="titulo-secao">
+        <div>
+          <p class="texto-auxiliar">ACOMPANHAMENTO POR MATÉRIA</p>
+          <h2 id="titulo-notas">Notas por disciplina</h2>
+        </div>
+        <span class="escala-notas">Notas de 0 a 10</span>
+      </div>
+
+      <p class="aviso-ficticio">
+        Este boletim utiliza dados fictícios para fins de demonstração.
+      </p>
+
+      <div class="tabela-container">
         <table>
           <thead>
             <tr>
-              <th>Disciplina</th>
-              <th>1º Tri</th>
-              <th>2º Tri</th>
-              <th>3º Tri</th>
-              <th>Média</th>
-              <th>Faltas</th>
-              <th>Situação</th>
+              <th scope="col">Disciplina</th>
+              <th scope="col">1º Tri</th>
+              <th scope="col">2º Tri</th>
+              <th scope="col">3º Tri</th>
+              <th scope="col">Média</th>
+              <th scope="col">Faltas</th>
+              <th scope="col">Situação</th>
             </tr>
           </thead>
+
+          <!-- O JavaScript criará as 15 linhas aqui -->
           <tbody id="corpo-tabela">
-            <!-- As linhas serão criadas pelo JavaScript -->
+            <tr>
+              <td colspan="7" class="mensagem-tabela">
+                Carregando dados demonstrativos...
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
+
+      <p class="legenda">
+        <span class="marcador-legenda marcador-bom"></span>
+        Bom desempenho
+        <span class="marcador-legenda marcador-atencao"></span>
+        Atenção
+        <span class="marcador-legenda marcador-pendente"></span>
+        Nota ainda não disponível
+      </p>
     </section>
 
+    <footer class="rodape">
+      <p>Boletim Digital • Projeto educacional demonstrativo • 8º Ano</p>
+    </footer>
   </main>
-
-  <footer class="rodape">
-    <p>Projeto Boletim Digital — dados fictícios para estudo.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
