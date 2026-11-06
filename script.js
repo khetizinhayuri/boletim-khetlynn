@@ -526,7 +526,7 @@ function aplicarDadosRecebidos(json) {
     }));
   } else {
     lista = dadosBrutos.map((d) => ({
-      disciplina: d.disciplina,
+      disciplina: d.disciplina,Boletim
       tri1: d.tri1,
       tri2: d.tri2,
       tri3: d.tri3,
