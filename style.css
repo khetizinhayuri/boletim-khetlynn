@@ -167,9 +167,7 @@ tr:nth-child(even) {
   text-align: center;
 }
 
-/* =========================================================
-   ESTILOS ADICIONADOS — ACESSO, EDIÇÃO E ESTADOS
-   ========================================================= */
+/* ACESSO E EDIÇÃO */
 
 .acesso-conteudo {
   max-width: 480px;
@@ -308,6 +306,94 @@ tr:nth-child(even) {
   vertical-align: middle;
 }
 
+/* =========================================================
+   GRÁFICOS — NOVOS ESTILOS
+   ========================================================= */
+
+.area-graficos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+  align-items: stretch;
+}
+
+.grafico-card {
+  min-width: 0;
+  padding: 18px;
+  background: var(--branco);
+  border: 1px solid var(--lilas);
+  border-top: 4px solid var(--roxo);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(84, 39, 130, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.grafico-card h2 {
+  margin: 0 0 18px;
+  color: var(--roxo-escuro);
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.grafico-container {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.grafico-medias {
+  height: 430px;
+}
+
+.grafico-evolucao,
+.grafico-faltas {
+  height: 280px;
+}
+
+#estadoFaltas {
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+#estadoFaltas:empty {
+  display: none;
+}
+
+#estadoFaltas .badge-perigo {
+  display: inline-block;
+  padding: 6px 10px;
+  color: #ffffff;
+  background: #b00020;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#card-grafico-faltas.estado-perigo {
+  border: 2px solid #b00020;
+  border-top: 4px solid #b00020;
+}
+
+.grafico-card canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 950px) {
+  .area-graficos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grafico-card:first-child {
+    grid-column: span 2;
+  }
+
+  .grafico-medias {
+    height: 430px;
+  }
+}
+
 @media (max-width: 600px) {
   .container {
     width: 94%;
@@ -326,5 +412,31 @@ tr:nth-child(even) {
 
   .linha-edicao input {
     width: 100%;
+  }
+
+  .area-graficos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .grafico-card:first-child {
+    grid-column: auto;
+  }
+
+  .grafico-card {
+    padding: 15px;
+  }
+
+  .grafico-card h2 {
+    font-size: 16px;
+  }
+
+  .grafico-medias {
+    height: 480px;
+  }
+
+  .grafico-evolucao,
+  .grafico-faltas {
+    height: 270px;
   }
 }
