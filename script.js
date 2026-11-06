@@ -130,3 +130,5 @@ function renderizarGraficos(boletim) {
     }
   );
 }
+ 
+apiUrl: "https://boletim-api.profbt.com.br"
