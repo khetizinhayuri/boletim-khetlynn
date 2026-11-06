@@ -698,3 +698,8 @@ if (formEdicao) {
     }
   });
 }
+
+  turma: "8A",
+  numeroChamada: 17,
+  apiUrl: "https://boletim-api.profbt.com.br"
+};
